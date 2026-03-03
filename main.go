@@ -17,6 +17,6 @@ func main() {
     http.HandleFunc("/articles/update", api.UpdateArticle)
     http.HandleFunc("/articles/delete", api.DeleteArticle)
 
-    log.Println("Article Service running on http://localhost:8081")
-    http.ListenAndServe(":8081", nil)
+    log.Println("Article Service running on http://localhost:5000")
+    http.ListenAndServe(":5000", nil)
 }
