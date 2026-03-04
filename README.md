@@ -2,8 +2,8 @@
 
 This project consists of:
 
-- A Go backend (REST API with GORM + MySQL)
-- A Vite + React frontend (styled with Chakra UI)
+- A Go backend (REST API with GORM + MySQL) => Tested in postman
+- A Vite + React frontend (styled with Chakra UI) => On debugging, feature coded: list and create
 
 ---
 
@@ -33,7 +33,8 @@ go install github.com/cosmtrek/air@latest
 
 run command
 
-```air
+```
+air
 
 ```
 
@@ -41,24 +42,79 @@ run command
 
 Navigate into frontend client folder
 
-```cd client
+```
+cd client
 
 ```
 
 Install dependencies
 
-```npm install
+```
+npm install
 
 ```
 
 Build the project
 
-```npm run build
+```
+npm run build
 
 ```
 
 Start dev server
 
-```npm run dev
+```
+npm run dev
+
+```
+
+### CURL for Backend Testing
+
+- Create Article
+
+```
+curl --location 'http://localhost:5000/articles/create' \
+--header 'Content-Type: text/plain' \
+--data '{
+    "title": "The Fishes of the sea",
+    "content": "tidebringer",
+    "category": "novel",
+    "status": "draft"
+}'
+
+```
+
+- List Article
+
+```
+curl --location 'http://localhost:5000/articles?limit=10&offset=0'
+
+```
+
+- Get Article by Id
+
+```
+curl --location 'http://localhost:5000/articles/get?id=2'
+
+```
+
+- Update Article
+
+```
+curl --location --request PUT 'http://localhost:5000/articles/update?id=1' \
+--header 'Content-Type: text/plain' \
+--data '{
+    "title": "The Ultimate Whale combat",
+    "content": "ultimate whale",
+    "category": "novel",
+    "status": "publish"
+}'
+
+```
+
+- Delete Article
+
+```
+curl --location --request DELETE 'http://localhost:5000/articles/delete?id=1'
 
 ```
